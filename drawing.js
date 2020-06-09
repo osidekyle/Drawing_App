@@ -8,11 +8,13 @@ window.addEventListener('load',()=>{
     //variables
     let painting=false;
 
-    function startPosition(){
+    function startPosition(e){
         painting=true;
+        draw(e);
     }
     function endPosition(){
         painting=false;
+        context.beginPath();
     }
 
 
@@ -20,6 +22,12 @@ window.addEventListener('load',()=>{
         if(!painting){
             return
         }
+        context.linewidth=10;
+        context.lineCap='round';
+        context.lineTo(e.clientX,e.clientY);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(e.clientX,e.clientY);
         
     }
     //Listeners
