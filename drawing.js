@@ -8,8 +8,24 @@ window.addEventListener('load',()=>{
     //variables
     let painting=false;
 
-    
+    function startPosition(){
+        painting=true;
+    }
+    function endPosition(){
+        painting=false;
+    }
+
+
+    function draw(e){
+        if(!painting){
+            return
+        }
+        
+    }
     //Listeners
+    canvas.addEventListener('mousedown',startPosition);
+    canvas.addEventListener('mouseup',endPosition);
+    canvas.addEventListener('mousemove',draw);
 
     
 });
