@@ -4,8 +4,20 @@ window.addEventListener('load',()=>{
 
 
 
-    //Resizing
-    canvas.height = window.innerHeight;
-    canvas.width= window.innerWidth;
+  
+    //variables
+    let painting=false;
+
+    
+    //Listeners
+
     
 });
+
+//Resizing
+function resizing(){
+    canvas.height = window.innerHeight;
+    canvas.width= window.innerWidth;
+}
+
+window.addEventListener('resize',resizing());
