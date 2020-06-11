@@ -4,8 +4,8 @@ window.addEventListener('load',()=>{
     const canvas= document.querySelector('#canvas');
     const context = canvas.getContext('2d');
     const slider = document.getElementById("myRange");
-
-    
+    const downloadButton = document.querySelector('.download-button');
+    const downloadLink = document.querySelector(".download-link");
   
     //variables
     let painting=false;
@@ -26,16 +26,23 @@ window.addEventListener('load',()=>{
         }
         context.lineWidth=slider.value;
         context.lineCap='round';
-        context.lineTo(e.clientX,e.clientY-70);
+        context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop);
         context.stroke();
         context.beginPath();
-        context.moveTo(e.clientX,e.clientY-70);
+        context.moveTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop);
         
+    }
+
+    function download(){
+        var dataUrl = canvas.toDataURL('image/png');
+        downloadLink.href=dataUrl;
+        downloadLink.click()
     }
     //Listeners
     canvas.addEventListener('mousedown',startPosition);
     canvas.addEventListener('mouseup',endPosition);
     canvas.addEventListener('mousemove',draw);
+    downloadLink.addEventListener('click',download)
 
     
 });
