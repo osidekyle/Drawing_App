@@ -1,9 +1,11 @@
+window.addEventListener('load',resizing);
 window.addEventListener('load',()=>{
+    
     const canvas= document.querySelector('#canvas');
     const context = canvas.getContext('2d');
+    const slider = document.getElementById("myRange");
 
-
-
+    
   
     //variables
     let painting=false;
@@ -22,7 +24,7 @@ window.addEventListener('load',()=>{
         if(!painting){
             return
         }
-        context.linewidth=10;
+        context.lineWidth=slider.value;
         context.lineCap='round';
         context.lineTo(e.clientX,e.clientY);
         context.stroke();
@@ -44,4 +46,4 @@ function resizing(){
     canvas.width= window.innerWidth;
 }
 
-window.addEventListener('resize',resizing());
+window.addEventListener('resize',resizing);
