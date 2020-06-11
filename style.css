@@ -24,9 +24,10 @@
     text-align: center;
 }
 .download-button{
-    
+    background-color:#909CC2;
+    color:white;
     margin-top:2rem;
-    border: solid black 1px;
+    border: none;
     border-radius: 10%;
     padding:1rem;
     transition: .4s ease all;
@@ -34,7 +35,7 @@
 
 
 .download-button:hover{
-    border:none;
-    background:green;
-    color:white;
+    border:solid black 1px;
+    background:white;
+    color:black;
 }
