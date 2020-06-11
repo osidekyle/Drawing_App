@@ -2,8 +2,39 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: sans-serif;
+    
 }
 
 #canvas{
     border: 2px solid black;
+    margin-top:7rem;
+}
+
+.top-bar{
+    position: fixed;
+    top:0%;
+    width:90%;
+    height:1rem;
+    margin:0 5%;
+    
+}
+
+.download-container{
+    text-align: center;
+}
+.download-button{
+    
+    margin-top:2rem;
+    border: solid black 1px;
+    border-radius: 10%;
+    padding:1rem;
+    transition: .4s ease all;
+}
+
+
+.download-button:hover{
+    border:none;
+    background:green;
+    color:white;
 }

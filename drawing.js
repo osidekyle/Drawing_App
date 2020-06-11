@@ -26,10 +26,10 @@ window.addEventListener('load',()=>{
         }
         context.lineWidth=slider.value;
         context.lineCap='round';
-        context.lineTo(e.clientX,e.clientY);
+        context.lineTo(e.clientX,e.clientY-70);
         context.stroke();
         context.beginPath();
-        context.moveTo(e.clientX,e.clientY);
+        context.moveTo(e.clientX,e.clientY-70);
         
     }
     //Listeners
