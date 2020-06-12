@@ -5,8 +5,7 @@ window.addEventListener('load',()=>{
     const context = canvas.getContext('2d');
     const slider = document.getElementById("myRange");
     const downloadButton = document.querySelector('.download-button');
-    const downloadLink = document.querySelector(".download-link");
-  
+    const downloadLink = document.getElementById("download");
     //variables
     let painting=false;
 
@@ -26,23 +25,21 @@ window.addEventListener('load',()=>{
         }
         context.lineWidth=slider.value;
         context.lineCap='round';
-        context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop);
+        context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
         context.stroke();
         context.beginPath();
-        context.moveTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop);
+        context.moveTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
         
     }
 
-    function download(){
-        var dataUrl = canvas.toDataURL('image/png');
-        downloadLink.href=dataUrl;
-        downloadLink.click()
-    }
+    
     //Listeners
     canvas.addEventListener('mousedown',startPosition);
     canvas.addEventListener('mouseup',endPosition);
     canvas.addEventListener('mousemove',draw);
-    downloadLink.addEventListener('click',download)
+    downloadButton.onclick = function(){
+        download(canvas,'drawing.png');
+    }
 
     
 });
@@ -54,3 +51,21 @@ function resizing(){
 }
 
 window.addEventListener('resize',resizing);
+
+
+//Download
+function download(canvas, filename){
+    var lnk=document.createElement('a'),e;
+    lnk.download=filename;
+    lnk.href = canvas.toDataURL("image/png;base64");
+
+    if(document.createEvent){
+        e=document.createEvent('MouseEvents');
+        e.initMouseEvent('click',true,true,window,0,0,0,0,0,false,false,false,0,null);
+        lnk.dispatchEvent(e);
+    }
+    else if(lnk.fireEvent){
+        lnk.fireEvent("onclick");
+    }
+
+}
