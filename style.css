@@ -26,19 +26,29 @@
 .download-container{
     text-align: center;
 }
-.download-button{
-    background-color:#55BCC9;
+.download-button, .clear-button{
     color:white;
-    margin-top:2rem;
     border: none;
+    margin-top:2rem;
     border-radius: 10%;
-    padding:1rem;
+    padding:.5rem;
     transition: .4s ease all;
 }
 
 
-.download-button:hover{
+.download-button:hover,.clear-button:hover{
     border:none;
     background:white;
     color:black;
+}
+
+
+
+.download-button{
+    background-color:#55BCC9;
+}
+
+.clear-button{
+    background-color: red;
+    
 }

@@ -5,7 +5,9 @@ window.addEventListener('load',()=>{
     const context = canvas.getContext('2d');
     const slider = document.getElementById("myRange");
     const downloadButton = document.querySelector('.download-button');
-    const downloadLink = document.getElementById("download");
+    const clearButton = document.querySelector('.clear-button');
+
+
     //variables
     let painting=false;
 
@@ -38,8 +40,11 @@ window.addEventListener('load',()=>{
     canvas.addEventListener('mouseup',endPosition);
     canvas.addEventListener('mousemove',draw);
     downloadButton.onclick = function(){
-        download(canvas,'drawing.png');
+        download(canvas,'drawing.png');  
     }
+    clearButton.addEventListener('click',()=>{
+        context.clearRect(0,0,canvas.width,canvas.height)
+    });
 
     
 });
@@ -58,7 +63,6 @@ function download(canvas, filename){
     var lnk=document.createElement('a'),e;
     lnk.download=filename;
     lnk.href = canvas.toDataURL("image/png;base64");
-
     if(document.createEvent){
         e=document.createEvent('MouseEvents');
         e.initMouseEvent('click',true,true,window,0,0,0,0,0,false,false,false,0,null);
@@ -67,5 +71,5 @@ function download(canvas, filename){
     else if(lnk.fireEvent){
         lnk.fireEvent("onclick");
     }
-
+   
 }
