@@ -6,7 +6,7 @@ window.addEventListener('load',()=>{
     const slider = document.getElementById("myRange");
     const downloadButton = document.querySelector('.download-button');
     const clearButton = document.querySelector('.clear-button');
-
+    const color = document.querySelector('.color-input');
 
     //variables
     let painting=false;
@@ -25,6 +25,7 @@ window.addEventListener('load',()=>{
         if(!painting){
             return
         }
+        context.color=color.value;
         context.lineWidth=slider.value;
         context.lineCap='round';
         context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);

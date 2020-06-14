@@ -52,3 +52,11 @@
     background-color: red;
     
 }
+
+.color-picker{
+    text-align: center;
+    
+}
+.color-input{
+    width:50%;
+}
