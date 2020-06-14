@@ -23,10 +23,9 @@
     
 }
 
-.download-container{
-    text-align: center;
-}
-.download-button, .clear-button{
+
+
+.download-button, .clear-button,.load-button{
     color:white;
     border: none;
     margin-top:2rem;
@@ -36,13 +35,21 @@
 }
 
 
-.download-button:hover,.clear-button:hover{
+.download-button:hover,.clear-button:hover,.load-button:hover{
     border:none;
     background:white;
     color:black;
 }
 
-
+.download-container button{
+    width:60%;  
+    font-size: 95%;
+    margin-top:2%;
+}
+.download-container input{
+    margin-top:2%;
+    border-radius:10%;
+}
 
 .download-button{
     background-color:#55BCC9;
@@ -52,11 +59,14 @@
     background-color: red;
     
 }
+.load-button{
+    background:green;
+}
 
 .color-picker{
     text-align: center;
     
 }
-.color-input{
+#color-input{
     width:50%;
 }

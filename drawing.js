@@ -6,7 +6,8 @@ window.addEventListener('load',()=>{
     const slider = document.getElementById("myRange");
     const downloadButton = document.querySelector('.download-button');
     const clearButton = document.querySelector('.clear-button');
-    const color = document.querySelector('.color-input');
+    const color = document.getElementById('color-input');
+    const imageLoader = document.getElementById('imageLoader');
 
     //variables
     let painting=false;
@@ -25,7 +26,7 @@ window.addEventListener('load',()=>{
         if(!painting){
             return
         }
-        context.color=color.value;
+        context.strokeStyle=color.value;
         context.lineWidth=slider.value;
         context.lineCap='round';
         context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
@@ -44,8 +45,29 @@ window.addEventListener('load',()=>{
         download(canvas,'drawing.png');  
     }
     clearButton.addEventListener('click',()=>{
-        context.clearRect(0,0,canvas.width,canvas.height)
+        context.clearRect(0,0,canvas.width,canvas.height);
+        imageLoader.value="";
     });
+
+
+
+
+
+    //Upload Image button listener and function
+    imageLoader.onchange=
+    function (e){
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var img = new Image();
+            img.onload = function(){
+                canvas.width=img.width
+                canvas.height=img.height
+                context.drawImage(img,0,0)
+            }
+            img.src=event.target.result
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    };
 
     
 });
@@ -74,3 +96,7 @@ function download(canvas, filename){
     }
    
 }
+
+
+
+
