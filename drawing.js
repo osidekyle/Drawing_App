@@ -80,7 +80,7 @@ window.addEventListener('load',()=>{
             img.src=event.target.result
         }
         reader.readAsDataURL(e.target.files[0]);
-        imageLoader.value="";
+        imageLoader.value=""
     };
 
     
@@ -109,7 +109,6 @@ function download(canvas, filename){
         lnk.fireEvent("onclick");
     }
     imageLoader.value=""
-   
 }
 
 
