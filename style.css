@@ -83,7 +83,7 @@
 
 .switch{
     position:relative;
-    
+   
     width:60px;
     height:34px
 }
@@ -95,8 +95,9 @@
 }
 
 .slider{
-    position: absolute;
+    position:absolute;
     cursor: pointer;
+    height:100%;
     top:50%;
     left:0;
     right: 0;
@@ -112,7 +113,6 @@
     content: "";
     height:26px;
     width: 26px;
-    top:50%;
     left:4px;
     bottom:4px;
     background: white;
