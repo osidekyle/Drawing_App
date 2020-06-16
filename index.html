@@ -29,13 +29,19 @@
         <input type="file" id='imageLoader' name='imageLoader'>
     </div>
     </div>
+    <div class="eraser-container col-xs-2">
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
     <div class="clear-container col-xs-1">
         <button class="clear-button" type='button'>Clear</button>
     </div>
 </div>
 </div>
-    <canvas id="canvas"></canvas>
-    
+    <canvas class='c' id="canvas"></canvas>
+    <canvas class='c' id='eraser-canvas'></canvas>
 
    
     <script src="drawing.js"></script>

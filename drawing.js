@@ -9,6 +9,9 @@ window.addEventListener('load',()=>{
     const color = document.getElementById('color-input');
     const imageLoader = document.getElementById('imageLoader');
 
+
+
+    
     //variables
     let painting=false;
 
