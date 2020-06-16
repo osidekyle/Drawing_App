@@ -8,7 +8,7 @@ window.addEventListener('load',()=>{
     const clearButton = document.querySelector('.clear-button');
     const color = document.getElementById('color-input');
     const imageLoader = document.getElementById('imageLoader');
-
+    const eraser = document.querySelector(".eraser");
 
 
     
@@ -29,7 +29,17 @@ window.addEventListener('load',()=>{
         if(!painting){
             return
         }
+
         context.strokeStyle=color.value;
+        context.globalCompositeOperation = "source-over";
+
+        if(eraser.checked){
+            context.globalCompositeOperation = "destination-out";  
+            context.strokeStyle = "rgba(255,255,255,1)";
+        }
+        
+            
+        
         context.lineWidth=slider.value;
         context.lineCap='round';
         context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
@@ -70,6 +80,7 @@ window.addEventListener('load',()=>{
             img.src=event.target.result
         }
         reader.readAsDataURL(e.target.files[0]);
+        imageLoader.value="";
     };
 
     
@@ -97,6 +108,7 @@ function download(canvas, filename){
     else if(lnk.fireEvent){
         lnk.fireEvent("onclick");
     }
+    imageLoader.value=""
    
 }
 
