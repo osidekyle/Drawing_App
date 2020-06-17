@@ -12,15 +12,15 @@
 <body>
     <div class="container-fluid top-bar bg-dark">
         <div class="flex-row">
-    <div class="slidecontainer col-xs-2">
+    <div class="slidecontainer col-xs-3">
         <p class="slider-title">Line Width</p>
         <input type="range"  min="1" max='100' value='10' id='myRange'>
     </div>
-    <div class="color-picker col-xs-2">
+    <div class="color-picker col-xs-3">
         <p class="color-title">Color</p>
         <input type="color" id="color-input">
     </div>
-    <div class="download-container col-xs-2">
+    <div class="download-container col-xs-3">
         
         <div class="row">
         <button class="download-button" type='button'>Download Drawing!</button>
@@ -29,7 +29,7 @@
         <input type="file" id='imageLoader' name='imageLoader'>
     </div>
     </div>
-    <div class="eraser-container col-xs-2">
+    <div class="eraser-container col-xs-1">
         <p class="eraser-title">Eraser</p>
         <label class="switch">
             <input type="checkbox" class="eraser">
@@ -38,6 +38,9 @@
     </div>
     <div class="clear-container col-xs-1">
         <button class="clear-button" type='button'>Clear</button>
+    </div>
+    <div class="undo-container col-xs-1">
+        <button class="undo" type='button'>Undo</button>
     </div>
 </div>
 </div>

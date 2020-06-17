@@ -9,22 +9,31 @@ window.addEventListener('load',()=>{
     const color = document.getElementById('color-input');
     const imageLoader = document.getElementById('imageLoader');
     const eraser = document.querySelector(".eraser");
-
+    const undoButton = document.querySelector('.undo');
 
     
     //variables
     let painting=false;
 
     function startPosition(e){
+        context.beginPath();
+        points=[];
         painting=true;
         draw(e);
     }
     function endPosition(){
         painting=false;
         context.beginPath();
+        sep_paths.push(points);
+        
     }
 
+    
 
+   
+    
+    var points=[];
+    var sep_paths=[];
     function draw(e){
         if(!painting){
             return
@@ -42,7 +51,9 @@ window.addEventListener('load',()=>{
         
         context.lineWidth=slider.value;
         context.lineCap='round';
+        
         context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
+        points.push({x:e.clientX+document.documentElement.scrollLeft,y:e.clientY+document.documentElement.scrollTop-70,mode:context.globalCompositeOperation,width:context.lineWidth,color:context.strokeStyle});
         context.stroke();
         context.beginPath();
         context.moveTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
@@ -50,16 +61,59 @@ window.addEventListener('load',()=>{
     }
 
     
+    function undo(){
+        console.log(sep_paths);
+        sep_paths.splice(-1,1);
+        context.clearRect(0,0,window.innerWidth,window.innerHeight);
+        sep_paths.forEach(path=>{
+            context.beginPath();
+            context.moveTo(path[0].x,path[0].y)
+            for(let i=0;i<path.length;i++){
+                context.strokeStyle=path[i].color;
+                context.globalCompositeOperation=path[i].mode;
+                context.lineWidth=path[i].width;
+                context.lineTo(path[i].x,path[i].y);
+            }
+            context.stroke();
+        });
+        
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+
     //Listeners
+    undoButton.onclick=function(){
+        undo();
+    }
     canvas.addEventListener('mousedown',startPosition);
     canvas.addEventListener('mouseup',endPosition);
     canvas.addEventListener('mousemove',draw);
+    
+    
+    
+    
+    
+    
+    
     downloadButton.onclick = function(){
         download(canvas,'drawing.png');  
     }
+
+
     clearButton.addEventListener('click',()=>{
         context.clearRect(0,0,canvas.width,canvas.height);
         imageLoader.value="";
+        points=[];
     });
 
 
@@ -111,6 +165,8 @@ function download(canvas, filename){
     imageLoader.value=""
 }
 
+
+//
 
 
 
