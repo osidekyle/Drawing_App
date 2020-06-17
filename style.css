@@ -40,9 +40,7 @@
     background:white;
     color:black;
 }
-.download-container.row{
-    text-align:center;
-}
+
 .download-container button{
     width:60%;  
     font-size: 95%;
@@ -51,6 +49,7 @@
 .download-container input{
     margin-top:2%;
     border-radius:10%;
+    
 }
 
 .download-button{
