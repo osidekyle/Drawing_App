@@ -11,7 +11,8 @@
 </head>
 <body>
     <div class="container-fluid top-bar bg-dark">
-        <div class="flex-row">
+        <div class="row">
+        
     <div class="slidecontainer col-xs-3">
         <p class="slider-title">Line Width</p>
         <input type="range"  min="1" max='100' value='10' id='myRange'>
@@ -22,19 +23,27 @@
     </div>
     <div class="download-container col-xs-3">
         
-        <div class="row">
+        <div class="row download-row">
         <button class="download-button" type='button'>Download Drawing!</button>
     </div>
     <div class="row">
+        <div class="loader-row">
         <input type="file" id='imageLoader' name='imageLoader'>
     </div>
     </div>
+    </div>
     <div class="eraser-container col-xs-1">
+        <div class="row">
         <p class="eraser-title">Eraser</p>
+        </div>
+    <div class="row">
+        <div class="slider-container">
         <label class="switch">
             <input type="checkbox" class="eraser">
             <span class="slider round"></span>
         </label>
+    </div>
+    </div>
     </div>
     <div class="clear-container col-xs-1">
         <button class="clear-button" type='button'>Clear</button>
@@ -42,6 +51,7 @@
     <div class="undo-container col-xs-1">
         <button class="undo" type='button'>Undo</button>
     </div>
+
 </div>
 </div>
     <canvas class='c' id="canvas"></canvas>
