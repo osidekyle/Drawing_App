@@ -1,6 +1,6 @@
 $(window).on('load',()=>{
     resizing();
-    $("#main").find("*").hide().fadeToggle(1000);
+    $("#main").find("*").hide().fadeToggle(750);
 
     
     const canvas= document.querySelector('#canvas');
