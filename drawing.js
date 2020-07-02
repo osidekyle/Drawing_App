@@ -2,13 +2,11 @@ $(window).on('load',()=>{
     resizing();
     $("#main").find("*").hide().fadeToggle(750);
 
-    
     const canvas= document.querySelector('#canvas');
     const context = canvas.getContext('2d');
     const downloadButton = document.querySelector('.download-button');
     const undoButton = document.querySelector('.undo');
 
-    
     //variables
     let painting=false;
     var points=[];
