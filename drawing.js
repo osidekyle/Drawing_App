@@ -1,7 +1,9 @@
+//On load, resizes screen and fades in main bar
 $(window).on('load',()=>{
     resizing();
     $("#main").find("*").hide().fadeToggle(750);
 
+    //Element selectors
     const canvas= document.querySelector('#canvas');
     const context = canvas.getContext('2d');
     const downloadButton = document.querySelector('.download-button');
@@ -12,6 +14,7 @@ $(window).on('load',()=>{
     var points=[];
     var sep_paths=[];
 
+    //Function for when mouse down on canvas
     function startPosition(e){
         context.beginPath();
         points=[];
@@ -19,28 +22,34 @@ $(window).on('load',()=>{
         draw(e);
     }
 
+    //Function for when mouse up on canvas
     function endPosition(){
         painting=false;
         context.beginPath();
         sep_paths.push(points);   
     }
 
+        //Function for drawing on canvas, executes when mousedown and when mouse moves on canvas
     function draw(e){
         if(!painting){
             return
         }
 
+        //Chooses color and composite operation
         context.strokeStyle=$("#color-input").val();
         context.globalCompositeOperation = "source-over";
 
+        //Checks for eraser
         if($(".eraser").prop("checked")){
             context.globalCompositeOperation = "destination-out";  
             context.strokeStyle = "rgba(255,255,255,1)";
         }
         
+        //Checks for line width
         context.lineWidth=$("#myRange").val();
         context.lineCap='round';
         
+        //Drawing lines and appending drawing info to points
         context.lineTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);
         points.push({x:e.clientX+document.documentElement.scrollLeft,y:e.clientY+document.documentElement.scrollTop-70,mode:context.globalCompositeOperation,width:context.lineWidth,color:context.strokeStyle});
         context.stroke();
@@ -48,14 +57,19 @@ $(window).on('load',()=>{
         context.moveTo(e.clientX+document.documentElement.scrollLeft,e.clientY+document.documentElement.scrollTop-70);   
     }
 
+    //Function for undoing drawing
     function undo(){
-        console.log(sep_paths);
+        //Take off last segment
         sep_paths.splice(-1,1);
+        //zclears canvas
         context.clearRect(0,0,window.innerWidth,window.innerHeight);
+        //For each segment
         sep_paths.forEach(path=>{
+            //Go to first coordinate
             context.beginPath();
             context.moveTo(path[0].x,path[0].y)
             for(let i=0;i<path.length;i++){
+                //Draws all points in the segment
                 context.strokeStyle=path[i].color;
                 context.globalCompositeOperation=path[i].mode;
                 context.lineWidth=path[i].width;
