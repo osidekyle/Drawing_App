@@ -162,7 +162,7 @@ input:focus + .slider{
 }
 
 input:checked + .slider:before{
-    @include transform(translateX(110%));
+    @include transform(translateX(125%));
 }
 
 

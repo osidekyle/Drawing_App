@@ -10,28 +10,39 @@
     <title>Drawing</title>
 </head>
 <body>
+    <!--Main Bar-->
     <div class="container-fluid top-bar bg-dark">
         <div class="row" id="main">
         
+
+        <!--Brush Size Slider-->
     <div class="slidecontainer col-xs-3">
         <p class="slider-title">Line Width</p>
         <input type="range"  min="1" max='100' value='10' id='myRange'>
     </div>
+
+    <!--Color Picker-->
     <div class="color-picker col-xs-3">
         <p class="color-title">Color</p>
         <input type="color" id="color-input">
     </div>
+
+    <!--Download Button-->
     <div class="download-container col-xs-3">
         
         <div class="row download-row">
         <button class="download-button" type='button'>Download Drawing!</button>
     </div>
+
+    <!--Load Button-->
     <div class="row">
         <div class="loader-row">
         <input type="file" id='imageLoader' name='imageLoader'>
     </div>
     </div>
     </div>
+
+    <!--Eraser Toggle-->
     <div class="eraser-container col-xs-1">
         <div class="row">
         <p class="eraser-title">Eraser</p>
@@ -45,15 +56,20 @@
     </div>
     </div>
     </div>
+
+    <!--Clear Button-->
     <div class="clear-container col-xs-1">
         <button class="clear-button" type='button'>Clear</button>
     </div>
+
+    <!--Undo Button-->
     <div class="undo-container col-xs-1">
         <button class="undo" type='button'>Undo</button>
     </div>
 
 </div>
 </div>
+    <!--Canvas-->
     <canvas class='c' id="canvas"></canvas>
    
 

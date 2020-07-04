@@ -6,7 +6,6 @@
   font-family: sans-serif;
 }
 
-
 eraser-container {
   width: 50%;
 }
@@ -143,8 +142,8 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(110%);
-  transform: translateX(110%);
+  -webkit-transform: translateX(125%);
+  transform: translateX(125%);
 }
 
 .slider.round {
